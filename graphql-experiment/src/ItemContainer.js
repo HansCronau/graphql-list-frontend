@@ -14,15 +14,18 @@ mutation updateItem($id: ID, $value: Boolean) {
 class ItemContainer extends Component {
   render() {
     return (
-      <div className="Item">
-        <Mutation mutation={UPDATE_ITEM}>
+      <li className="Item">
+        <Mutation
+            mutation={UPDATE_ITEM}
+            onError={() => console.log('There was an error. DON\'T PANIC.')}
+        >
           {(updateItem, { loading, error }) => {
             // console.log('loading: ', loading);
             // console.log('error: ', error);
             // if (error) return 'error';
 
             return (
-              <li>
+              <React.Fragment>
                 <input
                     type="checkbox"
                     checked={this.props.item.value}
@@ -52,11 +55,11 @@ class ItemContainer extends Component {
 
                 />
                 {error && '!'}
-              </li>
+              </React.Fragment>
             );
           }}
         </Mutation>
-      </div>
+      </li>
     );
   }
 }
