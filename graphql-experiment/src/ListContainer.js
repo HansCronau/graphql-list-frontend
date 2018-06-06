@@ -13,7 +13,7 @@ query {
 }
 `;
 
-const ListContainer = () => (
+const ListContainer = ({ ...restProps }) => (
   <div className="List">
     <Query query={listQuery}>
       {({ loading, error, data }) => {
@@ -22,11 +22,12 @@ const ListContainer = () => (
         if (loading) return 'loading';
         if (error) return 'error';
         return (
-          <List>
+          <List >
             {data.list.map(item => (
               <ItemContainer
                 key={item.id}
                 item={item}
+                {...restProps}
               />
             ))}
           </List>
