@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ListContainer from './ListContainer.js';
+import ListContainer from './ListContainer';
+import ListFlatContainer from './ListFlatContainer';
 
 class App extends Component {
   render() {
@@ -12,6 +13,8 @@ class App extends Component {
         <ListContainer />
         <h2>Non-Optimistic with Gray Out</h2>
         <ListContainer grayOut />
+        <h2>Update Whole Array</h2>
+        <ListFlatContainer />
       </div>
     );
   }
