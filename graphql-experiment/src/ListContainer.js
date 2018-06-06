@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import List from './List';
+import ItemContainer from './ItemContainer';
 
 const listQuery = gql`
 query {
@@ -24,10 +25,11 @@ class ListContainer extends Component {
             if (error) return 'error';
             return (
               <List>
-                {data.list.map(option => (
-                  <li key={option.id}>
-                    <input type="checkbox" checked={option.value} readOnly />
-                  </li>
+                {data.list.map(item => (
+                  <ItemContainer
+                    key={item.id}
+                    item={item}
+                  />
                 ))}
               </List>
             );
