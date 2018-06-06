@@ -16,10 +16,10 @@ class ItemContainer extends Component {
     return (
       <div className="Item">
         <Mutation mutation={UPDATE_ITEM}>
-          {(updateItem, { loading, error, data }) => {
+          {(updateItem, { loading, error }) => {
             // console.log('loading: ', loading);
             // console.log('error: ', error);
-            if (error) return 'error';
+            // if (error) return 'error';
 
             return (
               <li>
@@ -33,7 +33,15 @@ class ItemContainer extends Component {
                             variables: {
                                 id,
                                 value: !value,
-                            }
+                            },
+                            optimisticResponse: {
+                                __typename: 'Mutation',
+                                updateItem: {
+                                    __typename: 'Item',
+                                    id,
+                                    value: !value,
+                                }
+                            },
                         });
                     }}
                     // no gray out, non-optimistic
@@ -43,6 +51,7 @@ class ItemContainer extends Component {
                     // optimistic
 
                 />
+                {error && '!'}
               </li>
             );
           }}
