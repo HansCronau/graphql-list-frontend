@@ -13,31 +13,27 @@ query {
 }
 `;
 
-class ListContainer extends Component {
-  render() {
-    return (
-      <div className="List">
-        <Query query={listQuery}>
-          {({ loading, error, data }) => {
-            // console.log('loading: ', loading);
-            // console.log('error: ', error);
-            if (loading) return 'loading';
-            if (error) return 'error';
-            return (
-              <List>
-                {data.list.map(item => (
-                  <ItemContainer
-                    key={item.id}
-                    item={item}
-                  />
-                ))}
-              </List>
-            );
-          }}
-        </Query>
-      </div>
-    );
-  }
-}
+const ListContainer = () => (
+  <div className="List">
+    <Query query={listQuery}>
+      {({ loading, error, data }) => {
+        // console.log('loading: ', loading);
+        // console.log('error: ', error);
+        if (loading) return 'loading';
+        if (error) return 'error';
+        return (
+          <List>
+            {data.list.map(item => (
+              <ItemContainer
+                key={item.id}
+                item={item}
+              />
+            ))}
+          </List>
+        );
+      }}
+    </Query>
+  </div>
+);
 
 export default ListContainer;
