@@ -19,12 +19,30 @@ class ItemContainer extends Component {
           {(updateItem, { loading, error, data }) => {
             // console.log('loading: ', loading);
             // console.log('error: ', error);
-            if (loading) return 'loading';
             if (error) return 'error';
 
             return (
               <li>
-                <input type="checkbox" checked={this.props.item.value} readOnly />
+                <input
+                    type="checkbox"
+                    checked={this.props.item.value}
+                    readOnly
+                    onChange={e => {
+                        const { id, value } = this.props.item;
+                        updateItem({
+                            variables: {
+                                id,
+                                value: !value,
+                            }
+                        });
+                    }}
+                    // no gray out, non-optimistic
+                    // disabled={false}
+                    // gray out, non-optimistic
+                    // disabled={!!loading}
+                    // optimistic
+
+                />
               </li>
             );
           }}
