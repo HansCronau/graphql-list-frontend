@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import Item from './Item';
 
 const UPDATE_ITEM = gql`
 mutation updateItem($id: ID, $value: Boolean) {
@@ -14,7 +15,7 @@ mutation updateItem($id: ID, $value: Boolean) {
 class ItemContainer extends Component {
   render() {
     return (
-      <li className="Item">
+      <Item className="Item">
         <Mutation
             mutation={UPDATE_ITEM}
             onError={() => console.log('There was an error. DON\'T PANIC.')}
@@ -59,7 +60,7 @@ class ItemContainer extends Component {
             );
           }}
         </Mutation>
-      </li>
+      </Item>
     );
   }
 }
