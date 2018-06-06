@@ -7,7 +7,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const client = new ApolloClient({
-    uri: 'localhost:9002'
+    uri: 'http://localhost:4000/graphql'
 });
 
 const ApolloApp = AppComponent => (
