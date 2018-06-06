@@ -12,56 +12,51 @@ mutation updateItem($id: ID, $value: Boolean) {
 }
 `;
 
-const ItemContainer = ({ item, optimistic }) => (
-  <Item className="Item">
-    <Mutation
-        mutation={UPDATE_ITEM}
-        onError={() => console.log('There was an error. DON\'T PANIC.')}
-    >
-      {(updateItem, { loading, error }) => {
-        // console.log('loading: ', loading);
-        // console.log('error: ', error);
-        // if (error) return 'error';
+const ItemContainer = ({ item, optimistic, grayOut }) => (
+  <Mutation
+      mutation={UPDATE_ITEM}
+      onError={() => console.log('There was an error. DON\'T PANIC.')}
+  >
+    {(updateItem, { loading, error }) => {
+      // console.log('loading: ', loading);
+      // console.log('error: ', error);
+      // if (error) return 'error';
+      const disabled = !optimistic && grayOut && loading;
 
-        return (
-          <React.Fragment>
-            <input
-                type="checkbox"
-                checked={item.value}
-                readOnly
-                onChange={e => {
-                    const { id, value } = item;
-                    updateItem({
-                        variables: {
+      return (
+        <Item disabled={disabled}>
+          <input
+              type="checkbox"
+              checked={item.value}
+              readOnly
+              onChange={e => {
+                  const { id, value } = item;
+                  updateItem({
+                      variables: {
+                          id,
+                          value: !value,
+                      },
+                      optimisticResponse:
+                        optimistic
+                        ? {
+                          __typename: 'Mutation',
+                          updateItem: {
+                            __typename: 'Item',
                             id,
                             value: !value,
-                        },
-                        optimisticResponse:
-                          optimistic
-                          ? {
-                            __typename: 'Mutation',
-                            updateItem: {
-                              __typename: 'Item',
-                              id,
-                              value: !value,
-                            }
                           }
-                          : null,
-                    });
-                }}
-                // no gray out, non-optimistic
-                // disabled={false}
-                // gray out, non-optimistic
-                // disabled={!!loading}
-                // optimistic
+                        }
+                        : null,
+                  });
+              }}
+              disabled={disabled}
 
-            />
-            {error && '!'}
-          </React.Fragment>
-        );
-      }}
-    </Mutation>
-  </Item>
+          />
+          {error && '!'}
+        </Item>
+      );
+    }}
+  </Mutation>
 );
 
 export default ItemContainer;

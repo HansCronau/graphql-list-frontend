@@ -1,10 +1,12 @@
 import React from 'react';
+import classNames from 'classnames' ;
 
-const Item = ({ children }) => (
-    <li style={{
-        display: 'block',
-        textAlign: 'left',
-    }}>
+import './Item.css'
+
+const Item = ({ children, disabled }) => (
+    <li
+        className={classNames('Item', {disabled})}
+    >
         {children}
     </li>
 )
