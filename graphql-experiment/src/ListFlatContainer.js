@@ -13,8 +13,8 @@ query list{
 `;
 
 const UPDATE_LIST = gql`
-mutation updateList($values: [Boolean]) {
-  updateList(values: $values) {
+mutation updateFlatList($list: [FlatItemInput]) {
+  updateFlatList(list: $list) {
     value
   }
 }
@@ -34,18 +34,30 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
             mutation={UPDATE_LIST}
             onError={() => console.log('There was an error. DON\'T PANIC.')}
           >
-            {(updateList, { loading, error }) => {
+            {(updateFlatList, { loading, error }) => {
               const disabled = !optimistic && grayOut && loading;              
               return (
                 <List>
-                  {data.listFlat.map(item => (
+                  {data.listFlat.map((item, index) => (
                     <Item disabled={disabled}>
                       <input
-                          type="checkbox"
-                          checked={item.value}
-                          readOnly
-                          onChange={()=>null}
-                          disabled={disabled}
+                        type="checkbox"
+                        checked={item.value}
+                        readOnly
+                        onChange={
+                          e => {
+                            const list = data.listFlat.map(({ value }) => ({ value }));
+                            list[index] = {
+                              value: !list[index].value
+                            }
+                            updateFlatList({
+                              variables: {
+                                list,
+                              },
+                            })
+                          }
+                        }
+                        disabled={disabled}
                       />
                   </Item>
                   ))}
