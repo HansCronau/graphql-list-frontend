@@ -25,6 +25,8 @@ class App extends Component {
             <h3>Non-Optimistic, Grayed Out</h3>
             <ListContainer grayOut />
           </div>
+          <div class="example">
+          </div>
         </div>
 
         <h2>Array Mutation</h2>
@@ -41,21 +43,9 @@ class App extends Component {
             <h3>Non-Optimistic, Grayed Out</h3>
             <ListFlatContainer grayOut />
           </div>
-        </div>
-
-        <h2>Array Mutation + Apply Button</h2>
-        <div class="demo">
           <div class="example">
-            <h3>Default (A)</h3>
+            <h3>With Apply Button</h3>
             <ListFlatApplyContainer />
-          </div>
-          <div class="example">
-            <h3>Default (B)</h3>
-            <ListFlatApplyContainer />
-          </div>
-          <div class="example">
-            <h3>Grayed Out</h3>
-            <ListFlatApplyContainer grayOut />
           </div>
         </div>
 
