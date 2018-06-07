@@ -7,15 +7,21 @@ import Item from './Item';
 const FLAT_LIST = gql`
 query flatList{
   flatList {
-    value
+    id
+    list {
+      value
+    }
   }
 }
 `;
 
 const UPDATE_LIST = gql`
-mutation updateFlatList($list: [FlatItemInput]) {
-  updateFlatList(list: $list) {
-    value
+mutation updateFlatList($flatList: FlatListInput) {
+  updateFlatList(flatList: $flatList) {
+    id
+    list {
+      value
+    }
   }
 }
 `;
@@ -52,7 +58,10 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
                             }
                             updateFlatList({
                               variables: {
-                                list,
+                                flatList: {
+                                  id: data.flatList.id,
+                                  list,
+                                },
                               },
                             })
                           }
