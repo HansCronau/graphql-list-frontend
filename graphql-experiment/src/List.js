@@ -1,9 +1,11 @@
 import React from 'react';
 
+import './List.css'
+
 const List = ({ children }) => (
-    <ul>
-        {children}
-    </ul>
+  <ul className="List">
+    {children}
+  </ul>
 )
 
 export default List;

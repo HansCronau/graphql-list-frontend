@@ -1,7 +1,7 @@
 .Item {
-  width: 30px;
-  display: block;
-  text-align: left;
+  width: 100%;
+  list-style: none;
+  text-align: center;
 }
 
 .Item.disabled {
