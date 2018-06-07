@@ -8,6 +8,14 @@
   background: lightgray;
 }
 
+@keyframes backgroundFlashPink {
+  0% {background-color: transparent;}
+  5% {background-color: pink;}
+  75% {background-color: pink;}
+  100% {background-color: transparent;}
+}
+
 .Item.error {
-  background: pink;
+  animation-name: backgroundFlashPink;
+  animation-duration: 4s;
 }
