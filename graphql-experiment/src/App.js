@@ -7,14 +7,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h2>Optimistic</h2>
+        <h2>Individual - Optimistic</h2>
         <ListContainer optimistic />
-        <h2>Non-Optimistic</h2>
+        <h2>Individual - Non-Optimistic</h2>
         <ListContainer />
-        <h2>Non-Optimistic with Gray Out</h2>
+        <h2>Individual - Non-Optimistic, Grayed Out</h2>
         <ListContainer grayOut />
-        <h2>Update Whole Array</h2>
+        <h2>Array - Optimistic</h2>
+        <ListFlatContainer optimistic />
+        <h2>Array - Non-Optimistic</h2>
         <ListFlatContainer />
+        <h2>Array - Non-Optimistic, Grayed Out</h2>
+        <ListFlatContainer grayOut />
       </div>
     );
   }
