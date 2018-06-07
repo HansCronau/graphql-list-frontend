@@ -64,7 +64,6 @@ class ListFlatApplyContainer extends Component {
             
             return (
               <React.Fragment>
-                {!!error && <Message type="error">{error.message}</Message>}
                 <List>
                   {list.map((item, index) => (
                     <Item disabled={disabled} error={!!error}>
