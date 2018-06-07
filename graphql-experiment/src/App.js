@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import ListContainer from './ListContainer';
 import ListFlatContainer from './ListFlatContainer';
+import ListFlatApplyContainer from './ListFlatApplyContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+
         <h1>GraphQL Demo: The Power of Individual Mutations</h1>
         
         <h2>Individual Row Mutation</h2>
@@ -40,6 +42,23 @@ class App extends Component {
             <ListFlatContainer grayOut />
           </div>
         </div>
+
+        <h2>Array Mutation + Apply Button</h2>
+        <div class="demo">
+          <div class="example">
+            <h3>Default (A)</h3>
+            <ListFlatApplyContainer />
+          </div>
+          <div class="example">
+            <h3>Default (B)</h3>
+            <ListFlatApplyContainer />
+          </div>
+          <div class="example">
+            <h3>Grayed Out</h3>
+            <ListFlatApplyContainer grayOut />
+          </div>
+        </div>
+
       </div>
     );
   }
