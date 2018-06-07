@@ -38,7 +38,7 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
               const disabled = !optimistic && grayOut && loading;              
               return (
                 <List>
-                  {data.listFlat.list.map((item, index) => (
+                  {data.flatList.list.map((item, index) => (
                     <Item disabled={disabled} error={!!error}>
                       <input
                         type="checkbox"
@@ -46,7 +46,7 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
                         readOnly
                         onChange={
                           e => {
-                            const list = data.listFlat.list.map(({ value }) => ({ value }));
+                            const list = data.flatList.list.map(({ value }) => ({ value }));
                             list[index] = {
                               value: !list[index].value
                             }
