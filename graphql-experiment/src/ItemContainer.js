@@ -24,7 +24,7 @@ const ItemContainer = ({ item, optimistic, grayOut }) => (
       const disabled = !optimistic && grayOut && loading;
 
       return (
-        <Item disabled={disabled}>
+        <Item disabled={disabled} error={!!error}>
           <input
               type="checkbox"
               checked={item.value}
@@ -50,9 +50,7 @@ const ItemContainer = ({ item, optimistic, grayOut }) => (
                   });
               }}
               disabled={disabled}
-
           />
-          {error && '!'}
         </Item>
       );
     }}

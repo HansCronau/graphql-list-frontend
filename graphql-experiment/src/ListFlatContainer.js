@@ -28,7 +28,7 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
         // console.log('error: ', error);
         // console.log(name, loading, error, data);
         if (loading) return 'loading';
-        if (error) return 'error';
+        // if (error) return 'error';
         return (
           <Mutation
             mutation={UPDATE_LIST}
@@ -38,15 +38,15 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
               const disabled = !optimistic && grayOut && loading;              
               return (
                 <List>
-                  {data.listFlat.map((item, index) => (
-                    <Item disabled={disabled}>
+                  {data.listFlat.list.map((item, index) => (
+                    <Item disabled={disabled} error={!!error}>
                       <input
                         type="checkbox"
                         checked={item.value}
                         readOnly
                         onChange={
                           e => {
-                            const list = data.listFlat.map(({ value }) => ({ value }));
+                            const list = data.listFlat.list.map(({ value }) => ({ value }));
                             list[index] = {
                               value: !list[index].value
                             }

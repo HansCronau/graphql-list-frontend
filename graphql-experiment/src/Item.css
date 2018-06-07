@@ -1,9 +1,13 @@
 .Item {
-    width: 30px;
-    display: block;
-    text-align: left;
+  width: 30px;
+  display: block;
+  text-align: left;
 }
 
 .Item.disabled {
-    background: lightgray;
+  background: lightgray;
+}
+
+.Item.error {
+  background: pink;
 }
