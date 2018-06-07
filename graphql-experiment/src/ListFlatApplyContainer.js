@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import { withApollo, Mutation } from "react-apollo";
 import List from './List';
 import Item from './Item';
+import Message from './Message';
 
 const FLAT_LIST = gql`
 query flatList{
@@ -63,7 +64,7 @@ class ListFlatApplyContainer extends Component {
             
             return (
               <React.Fragment>
-                {!!error && <p>{error.message}</p>}
+                {!!error && <Message type="error">{error.message}</Message>}
                 <List>
                   {list.map((item, index) => (
                     <Item disabled={disabled} error={!!error}>
