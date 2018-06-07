@@ -30,11 +30,7 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
   <div className="List">
     <Query query={FLAT_LIST}>
       {({ loading, error, data }) => {
-        // console.log('loading: ', loading);
-        // console.log('error: ', error);
-        // console.log(name, loading, error, data);
         if (loading) return 'loading';
-        // if (error) return 'error';
         return (
           <Mutation
             mutation={UPDATE_LIST}
@@ -82,7 +78,6 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
                         }
                         disabled={disabled}
                       />
-                      {/* {optimistic ? 'optimistisch!' : 'non-optimistisch'} */}
                   </Item>
                   ))}
                 </List>

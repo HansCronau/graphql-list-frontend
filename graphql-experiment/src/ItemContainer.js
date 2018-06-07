@@ -18,9 +18,6 @@ const ItemContainer = ({ item, optimistic, grayOut }) => (
       onError={() => console.log('There was an error. DON\'T PANIC.')}
   >
     {(updateItem, { loading, error }) => {
-      // console.log('loading: ', loading);
-      // console.log('error: ', error);
-      // if (error) return 'error';
       const disabled = !optimistic && grayOut && loading;
 
       return (

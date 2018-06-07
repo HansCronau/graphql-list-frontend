@@ -17,8 +17,6 @@ const ListContainer = ({ ...restProps }) => (
   <div className="List">
     <Query query={listQuery}>
       {({ loading, error, data }) => {
-        // console.log('loading: ', loading);
-        // console.log('error: ', error);
         if (loading) return 'loading';
         if (error) return 'error';
         return (
