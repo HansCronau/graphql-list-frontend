@@ -52,17 +52,29 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
                         readOnly
                         onChange={
                           e => {
-                            const list = data.flatList.list.map(({ value }) => ({ value }));
+                            const { id, list: oldList } = data.flatList;
+                            const list = oldList.map(({ value }) => ({ value }));
                             list[index] = {
                               value: !list[index].value
                             }
                             updateFlatList({
                               variables: {
                                 flatList: {
-                                  id: data.flatList.id,
+                                  id,
                                   list,
                                 },
                               },
+                              optimisticResponse:
+                                optimistic
+                                ? {
+                                  __typename: 'Mutation',
+                                  updateItem: {
+                                    __typename: 'FlatList',
+                                    id,
+                                    list,
+                                  }
+                                }
+                                : null,
                             })
                           }
                         }
