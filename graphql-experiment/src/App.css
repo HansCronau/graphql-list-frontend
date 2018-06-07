@@ -13,7 +13,13 @@ h1 {
 }
 
 .demo .example {
+  width: 33%;
   flex-grow: 1;
+  text-align: center;
+}
+
+.demo .example.wide {
+  flex-grow: 2;
 }
 
 .demo .example h3 {
