@@ -8,7 +8,8 @@ class App extends Component {
     return (
       <div className="App">
         <h1>GraphQL Demo: The Power of Individual Mutations</h1>
-        <h2>Individual Row Mutations</h2>
+        
+        <h2>Individual Row Mutation</h2>
         <div class="demo">
           <div class="example">
             <h3>Optimistic</h3>
@@ -23,7 +24,8 @@ class App extends Component {
             <ListContainer grayOut />
           </div>
         </div>
-        <h2>Array Mutations</h2>
+
+        <h2>Array Mutation</h2>
         <div class="demo">
           <div class="example">
             <h3>Optimistic</h3>
