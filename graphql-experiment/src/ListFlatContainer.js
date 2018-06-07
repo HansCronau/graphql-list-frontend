@@ -53,25 +53,27 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
                         onChange={
                           e => {
                             const { id, list: oldList } = data.flatList;
-                            const list = oldList.map(({ value }) => ({ value }));
-                            list[index] = {
-                              value: !list[index].value
+                            const updatedList = [...oldList];
+                            updatedList[index] = {
+                              ...updatedList[index],
+                              value: !updatedList[index].value,
                             }
+                            const mutateList = updatedList.map(({ value }) => ({ value }));
                             updateFlatList({
                               variables: {
                                 flatList: {
                                   id,
-                                  list,
+                                  list: mutateList,
                                 },
                               },
                               optimisticResponse:
                                 optimistic
                                 ? {
                                   __typename: 'Mutation',
-                                  updateItem: {
+                                  updateFlatList: {
                                     __typename: 'FlatList',
                                     id,
-                                    list,
+                                    list: updatedList,
                                   }
                                 }
                                 : null,
@@ -80,6 +82,7 @@ const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
                         }
                         disabled={disabled}
                       />
+                      {/* {optimistic ? 'optimistisch!' : 'non-optimistisch'} */}
                   </Item>
                   ))}
                 </List>
