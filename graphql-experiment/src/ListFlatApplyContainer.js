@@ -36,7 +36,7 @@ class ListFlatApplyContainer extends Component {
     const { client } = this.props;
     client.query({
       query: FLAT_LIST
-    }). then(({ loading, error, data }) => {
+    }).then(({ loading, error, data }) => {
       const { id, list } = data.flatList;
       this.setState({
         id,
@@ -45,7 +45,7 @@ class ListFlatApplyContainer extends Component {
     });
   }
   render() {
-    const { name, optimistic, grayOut, ...restProps } = this.props;
+    const { name, grayOut, ...restProps } = this.props;
     const { id, list, changed } = this.state;
     return (
       <div className="List">
@@ -54,7 +54,7 @@ class ListFlatApplyContainer extends Component {
           onError={() => console.log('There was an error. DON\'T PANIC.')}
         >
           {(updateFlatList, { loading, error, called }) => {
-            const disabled = !optimistic && grayOut && loading;
+            const disabled = grayOut && loading;
             
             const canSave = changed || !!error;
             let buttonText;
@@ -88,7 +88,6 @@ class ListFlatApplyContainer extends Component {
                         }
                         disabled={disabled}
                       />
-                      {/* {optimistic ? 'optimistisch!' : 'non-optimistisch'} */}
                   </Item>
                   ))}
                 </List>
