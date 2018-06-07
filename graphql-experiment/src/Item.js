@@ -1,14 +1,14 @@
 import React from 'react';
-import classNames from 'classnames' ;
+import classNames from 'classnames';
 
-import './Item.css'
+import './Item.css';
 
 const Item = ({ children, disabled, error }) => (
-    <li
-        className={classNames('Item', {disabled}, {error})}
-    >
-        {children}
-    </li>
+  <li
+    className={classNames('Item', {disabled}, {error})}
+  >
+    {children}
+  </li>
 )
 
 export default Item;
