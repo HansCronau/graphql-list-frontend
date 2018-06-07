@@ -4,9 +4,9 @@ import { Query, Mutation } from "react-apollo";
 import List from './List';
 import Item from './Item';
 
-const listQuery = gql`
-query list{
-  listFlat {
+const FLAT_LIST = gql`
+query flatList{
+  flatList {
     value
   }
 }
@@ -22,7 +22,7 @@ mutation updateFlatList($list: [FlatItemInput]) {
 
 const ListFlatContainer = ({ name, optimistic, grayOut, ...restProps }) => (
   <div className="List">
-    <Query query={listQuery}>
+    <Query query={FLAT_LIST}>
       {({ loading, error, data }) => {
         // console.log('loading: ', loading);
         // console.log('error: ', error);
